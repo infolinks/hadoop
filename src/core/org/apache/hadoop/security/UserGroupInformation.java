@@ -409,7 +409,15 @@ public class UserGroupInformation {
   
   private static LoginContext
   newLoginContext(String appName, Subject subject) throws LoginException {
-    return new LoginContext(appName, subject, null, new HadoopConfiguration());
+    //switch tccl so that HadoopLoginModule will be loaded properly from the JAAS libraries
+    //once done switch back
+    ClassLoader tccl = Thread.currentThread().getContextClassLoader();
+    Thread.currentThread().setContextClassLoader(HadoopLoginModule.class.getClassLoader());
+    try {
+      return new LoginContext(appName, subject, null, new HadoopConfiguration());
+    } finally {
+      Thread.currentThread().setContextClassLoader(tccl);
+    }
   }
   
   private LoginContext getLogin() {
