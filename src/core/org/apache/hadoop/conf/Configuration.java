@@ -196,7 +196,7 @@ public class Configuration implements Iterable<Map.Entry<String,String>>,
     addDefaultResource("core-default.xml");
     addDefaultResource("core-site.xml");
   }
-  
+
   private Properties properties;
   private Properties overlay;
   private ClassLoader classLoader;
@@ -272,6 +272,9 @@ public class Configuration implements Iterable<Map.Entry<String,String>>,
     synchronized(Configuration.class) {
       REGISTRY.put(this, null);
     }
+    this.classLoader = other.classLoader;
+    this.loadDefaults = other.loadDefaults;
+    this.setQuietMode(other.getQuietMode());
   }
   
   /**
@@ -1399,6 +1402,10 @@ public class Configuration implements Iterable<Map.Entry<String,String>>,
    */
   public synchronized void setQuietMode(boolean quietmode) {
     this.quietmode = quietmode;
+  }
+
+  public synchronized boolean getQuietMode() {
+      return this.quietmode;
   }
 
   /** For debugging.  List non-default properties to the terminal and exit. */
