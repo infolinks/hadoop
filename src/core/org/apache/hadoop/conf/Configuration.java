@@ -183,11 +183,9 @@ public class Configuration implements Iterable<Map.Entry<String,String>>,
   private HashMap<String, String> updatingResource;
   
   static{
+    //set the class's CL (the bundle's CL) because it is the only CL that is aware of the bundle's classpath
+    ClassLoader cL = Configuration.class.getClassLoader();
     //print deprecation warning if hadoop-site.xml is found in classpath
-    ClassLoader cL = Thread.currentThread().getContextClassLoader();
-    if (cL == null) {
-      cL = Configuration.class.getClassLoader();
-    }
     if(cL.getResource("hadoop-site.xml")!=null) {
       LOG.warn("DEPRECATED: hadoop-site.xml found in the classpath. " +
           "Usage of hadoop-site.xml is deprecated. Instead use core-site.xml, "
@@ -203,10 +201,8 @@ public class Configuration implements Iterable<Map.Entry<String,String>>,
   private Properties overlay;
   private ClassLoader classLoader;
   {
-    classLoader = Thread.currentThread().getContextClassLoader();
-    if (classLoader == null) {
-      classLoader = Configuration.class.getClassLoader();
-    }
+    //set the class's CL (the bundle's CL) because it is the only CL that is aware of the bundle's classpath
+    classLoader = Configuration.class.getClassLoader();
   }
   
   /** A new configuration. */
