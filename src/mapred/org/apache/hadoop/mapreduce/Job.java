@@ -132,6 +132,14 @@ public class Job extends JobContext {
   public void setJarByClass(Class<?> cls) {
     conf.setJarByClass(cls);
   }
+
+  /**
+   * Set the Jar by a given path.
+   * @param jar the jar path
+   */
+  public void setJarByClass(String jar) {
+    conf.setJarByClass(jar);
+  }
   
   /**
    * Get the pathname of the job's jar.

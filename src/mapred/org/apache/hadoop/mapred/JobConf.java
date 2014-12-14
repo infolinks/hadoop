@@ -429,6 +429,17 @@ public class JobConf extends Configuration {
     }   
   }
 
+  /**
+   * Set the job's jar file by a supplied jar path.
+   *
+   * @param jar the jar path.
+   */
+  public void setJarByClass(String jar) {
+    if (jar != null) {
+      setJar(jar);
+    }
+  }
+
   public String[] getLocalDirs() throws IOException {
     return getStrings(MAPRED_LOCAL_DIR_PROPERTY);
   }
