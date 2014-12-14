@@ -26,9 +26,8 @@
   <property file="${user.home}/build.properties" />
   <property file="${basedir}/build.properties" />
  
-  <property name="Name" value="Hadoop"/>
   <property name="name" value="hadoop"/>
-  <property name="version" value="1.0.4-SNAPSHOT"/>
+  <property name="version" value="1.0.4-OSGi-SNAPSHOT"/>
   <property name="final.name" value="${name}-${version}"/>
   <property name="test.final.name" value="${name}-test-${version}"/>
   <property name="year" value="2009"/>
@@ -762,6 +761,11 @@
       </service>
       <fileset dir="${conf.dir}" includes="${jar.properties.list}" />
       <fileset file="${jar.extra.properties.list}" />
+      <!-- Add to bundle classpath -->
+      <fileset file="${build.dir}/ivy/lib/Hadoop/common/commons-configuration-1.6.jar" />
+      <fileset file="${build.dir}/ivy/lib/Hadoop/common/commons-cli-1.2.jar" />
+      <fileset file="${build.dir}/ivy/lib/Hadoop/common/commons-daemon-1.0.1.jar" />
+      <fileset file="${build.dir}/ivy/lib/Hadoop/common/commons-digester-1.8.jar" />
       <zipfileset dir="${build.webapps}" prefix="webapps"/>
     </jar>
     <mkdir dir="${build.dir}/empty"/>
@@ -784,6 +788,11 @@
           <attribute name="Implementation-Vendor" value="Apache"/>
         </section>
       </manifest>
+    </jar>
+    <!-- Build sources -->
+    <jar destfile="${build.dir}/${core.final.name}-sources.jar">
+      <fileset dir="${build.dir}/classes" />
+      <fileset dir="${src.dir}" includes="**/*.java"/>
     </jar>
   </target>
 
