@@ -767,6 +767,9 @@
       <fileset file="${build.dir}/ivy/lib/Hadoop/common/commons-daemon-1.0.1.jar" />
       <fileset file="${build.dir}/ivy/lib/Hadoop/common/commons-digester-1.8.jar" />
       <zipfileset dir="${build.webapps}" prefix="webapps"/>
+      <!-- Native libs directory -->
+      <zipfileset dir="${build.dir}/../native-lib/Linux-amd64-64" prefix="Linux-amd64-64"/>
+      <zipfileset dir="${build.dir}/../native-lib/Linux-i386-32" prefix="Linux-i386-32"/>
     </jar>
     <mkdir dir="${build.dir}/empty"/>
     <jar jarfile="${build.dir}/${hadoop-client.final.name}.jar"
