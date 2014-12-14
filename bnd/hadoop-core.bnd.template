@@ -1,0 +1,8 @@
+Export-Package: org.apache.hadoop.*;version="@HADOOP_VERSION@"
+Import-Package: *;resolution:=optional
+Bundle-ClassPath: .,commons-configuration-1.6.jar,commons-cli-1.2.jar,commons-daemon-1.0.1.jar,commons-digester-1.8.jar
+Bundle-Version: @HADOOP_VERSION@
+Bundle-Description: Hadoop @HADOOP_VERSION@ OSGi bundle
+Bundle-Name: Hadoop @HADOOP_VERSION@
+Bundle-SymbolicName: org.apache.hadoop.common
+Bundle-NativeCode: Linux-amd64-64/libhadoop.so; Linux-amd64-64/libsnappy.so; osname=Linux; processor=x86; processor=x86_64, Linux-i386-32/libhadoop.so; osname=Linux; processor=x86; processor=x86_64, *
