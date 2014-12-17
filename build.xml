@@ -27,7 +27,7 @@
   <property file="${basedir}/build.properties" />
  
   <property name="name" value="hadoop"/>
-  <property name="version" value="1.0.4-OSGi-SNAPSHOT"/>
+  <property name="version" value="1.0.4-OSGi"/>
   <property name="final.name" value="${name}-${version}"/>
   <property name="test.final.name" value="${name}-test-${version}"/>
   <property name="year" value="2009"/>
